@@ -46,11 +46,11 @@
         
         <!--TitlePanel contains the name of the application and page title-->
         <Grid VerticalAlignment="Bottom">
-        <StackPanel x:Name="TitlePanel"   Margin="12,0,0,0">
-            <TextBlock Margin="12,0,0,0"  Text="Password"/>
-            <TextBox/>               
-            <Button Content="Enter"/>
-        </StackPanel>
+            <StackPanel x:Name="TitlePanel"   Margin="12,0,0,0">
+                <TextBlock Margin="12,0,0,0"  Text="{Binding Path=LocalizedResources.Password, Source={StaticResource LocalizedStrings}}"/>
+                <TextBox/>
+                <Button Content="{Binding Path=LocalizedResources.SignIn, Source={StaticResource LocalizedStrings}}"/>
+            </StackPanel>
         </Grid>
         <!--ContentPanel - place additional content here-->
         <!--Uncomment to see an alignment grid to help ensure your controls are

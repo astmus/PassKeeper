@@ -18,15 +18,23 @@
           </trans-unit>
         <trans-unit id="Resx/ApplicationTitle" translate="yes" xml:space="preserve">
           <source>MY APPLICATION</source>
-          <target state="new">MY APPLICATION</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">МОЯ ЗАЯВА</target>
         </trans-unit>
         <trans-unit id="Resx/AppBarButtonText" translate="yes" xml:space="preserve">
           <source>add</source>
-          <target state="new">add</target>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Додати</target>
         </trans-unit>
         <trans-unit id="Resx/AppBarMenuItemText" translate="yes" xml:space="preserve">
           <source>Menu Item</source>
-          <target state="new">Menu Item</target>
+          <target state="translated" state-qualifier="tm-suggestion">Пункт меню</target>
+        </trans-unit>
+        <trans-unit id="Resx/SignIn" translate="yes" xml:space="preserve">
+          <source>Sign in</source>
+          <target state="translated" state-qualifier="tm-suggestion">Увійти</target>
+        </trans-unit>
+        <trans-unit id="Resx/Password" translate="yes" xml:space="preserve">
+          <source>Password</source>
+          <target state="translated">Пароль</target>
         </trans-unit>
       </group>
     </body>

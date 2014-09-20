@@ -128,4 +128,4 @@
   
   
   
-</root>
+<data name="ApplicationTitle" xml:space="preserve"><value>мое приложение</value></data><data name="AppBarButtonText" xml:space="preserve"><value>Добавить</value></data><data name="AppBarMenuItemText" xml:space="preserve"><value>элемент меню</value></data><data name="SignIn" xml:space="preserve"><value>Войти</value></data></root>
