@@ -48,6 +48,22 @@
           <source>Password was copied</source>
           <target state="new">Password was copied</target>
         </trans-unit>
+        <trans-unit id="Resx/Delete" translate="yes" xml:space="preserve">
+          <source>Delete</source>
+          <target state="new">Delete</target>
+        </trans-unit>
+        <trans-unit id="Resx/Name" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <target state="new">Name</target>
+        </trans-unit>
+        <trans-unit id="Resx/MessageEnterAccountData" translate="yes" xml:space="preserve">
+          <source>Enter new account data</source>
+          <target state="new">Enter new account data</target>
+        </trans-unit>
+        <trans-unit id="Resx/Login" translate="yes" xml:space="preserve">
+          <source>Login</source>
+          <target state="new">Login</target>
+        </trans-unit>
         <trans-unit id="Resx/MessageLoginWasCopied" translate="yes" xml:space="preserve">
           <source>Login was copied</source>
           <target state="new">Login was copied</target>

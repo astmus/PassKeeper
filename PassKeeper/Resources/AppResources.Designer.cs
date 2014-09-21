@@ -97,6 +97,33 @@ namespace PassKeeper.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        public static string Login {
+            get {
+                return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter new account data.
+        /// </summary>
+        public static string MessageEnterAccountData {
+            get {
+                return ResourceManager.GetString("MessageEnterAccountData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter password and press &apos;Sign in&apos;.
         /// </summary>
         public static string MessageEnterPassword {
@@ -129,6 +156,15 @@ namespace PassKeeper.Resources {
         public static string MessageWrongPassword {
             get {
                 return ResourceManager.GetString("MessageWrongPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
             }
         }
         

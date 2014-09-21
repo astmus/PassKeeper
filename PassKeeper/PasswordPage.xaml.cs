@@ -11,6 +11,10 @@ using PassKeeper.Resources;
 using System.Windows.Media;
 using System.Threading.Tasks;
 using System.Windows.Controls.Primitives;
+using System.IO.IsolatedStorage;
+using System.IO;
+using System.Collections.ObjectModel;
+using Newtonsoft.Json;
 
 namespace PassKeeper
 {
@@ -22,6 +26,9 @@ namespace PassKeeper
 		TextBlock _lastSelectedPasswprd =new TextBlock();
 		SolidColorBrush _selectColor;
 		SolidColorBrush _defaultColor;
+		bool _dialogIsShow;
+		ObservableCollection<Account> _accounts;
+		AddAccount _currentAccountData;
 
 		public PasswordPage()
 		{
@@ -29,7 +36,8 @@ namespace PassKeeper
 			BuildAppBar();
 			_selectColor = (SolidColorBrush)Application.Current.Resources["PhoneAccentBrush"];
 			_defaultColor = (SolidColorBrush)Application.Current.Resources["PhoneForegroundBrush"];
-			PassHoslder.ItemsSource = objs;
+			LoadAccounts();
+			PassHoslder.ItemsSource = _accounts;
 		}
 
 		private void BuildAppBar()
@@ -37,11 +45,52 @@ namespace PassKeeper
 			ApplicationBar = new ApplicationBar();
 			ApplicationBarIconButton button = new ApplicationBarIconButton(new Uri("/Images/add.png", UriKind.Relative));
 			button.Text = AppResources.Add;
+			button.Click += AddAccount_Click;
 			ApplicationBar.Buttons.Add(button);			
 		}
 
-		private void CopyLogin_Click(object sender, RoutedEventArgs e)
+		void AddAccount_Click(object sender, EventArgs e)
 		{
+			_currentAccountData = new AddAccount();			
+			CustomMessageBox cmb = new CustomMessageBox();
+			cmb.Caption = AppResources.MessageEnterAccountData;
+			cmb.LeftButtonContent = "ok";
+			cmb.RightButtonContent = "cancel";
+			cmb.Content = _currentAccountData;
+			cmb.Dismissed += cmb_Dismissed;
+			cmb.Show();
+			_dialogIsShow = true;
+		}
+
+		void cmb_Dismissed(object sender, DismissedEventArgs e)
+		{
+			switch (e.Result)
+			{
+				case CustomMessageBoxResult.LeftButton:
+					{
+						if (string.IsNullOrEmpty(_currentAccountData.Login.Text)) return;
+						if (string.IsNullOrEmpty(_currentAccountData.Name.Text)) return;
+						if (string.IsNullOrEmpty(_currentAccountData.Password.Text)) return;
+						Account a = new Account();
+						a.Login = _currentAccountData.Login.Text;
+						a.Name = _currentAccountData.Name.Text;
+						a.Password = _currentAccountData.Password.Text;
+						_accounts.Add(a);
+						SaveAccounts();
+					}
+					break;
+				case CustomMessageBoxResult.RightButton:				
+					break;
+				default:
+					break;
+			}
+			
+			PassHoslder.SelectedItem = null;
+			_dialogIsShow = false;
+		}
+
+		private void CopyLogin_Click(object sender, RoutedEventArgs e)
+		{			
 			PaintSelectedItem(sender as Button, true);
 			this.ShowPopup(AppResources.MessageLoginWasCopied);
 		}
@@ -54,17 +103,23 @@ namespace PassKeeper
 
 		private void PaintSelectedItem(Button childButton, bool paintLogin)
 		{
-			object data = childButton.DataContext as object;
-			ListBoxItem pressedItem = PassHoslder.ItemContainerGenerator.ContainerFromItem(data) as ListBoxItem;
+			Account data = childButton.DataContext as Account;
+			ListBoxItem pressedItem = PassHoslder.ItemContainerGenerator.ContainerFromItem(data) as ListBoxItem;			
 			TextBlock paintObj = (TextBlock)SearchVisualTree(pressedItem, paintLogin ? "loginTextBlock" : "passwordTextBlock");
 			_lastSelectedLogin.Foreground = _defaultColor;
 			_lastSelectedPasswprd.Foreground = _defaultColor;
 			paintObj.Foreground = _selectColor;
 
 			if (paintLogin)
+			{
 				_lastSelectedLogin = paintObj;
+				Clipboard.SetText(data.Login);
+			}
 			else
+			{
 				_lastSelectedPasswprd = paintObj;
+				Clipboard.SetText(data.Password);
+			}
 		}
 
 		private FrameworkElement SearchVisualTree(DependencyObject targetElement, string name)
@@ -130,9 +185,54 @@ namespace PassKeeper
 
 			this._popup.IsOpen = true;
 
-			await Task.Delay(2000);
+			await Task.Delay(1000);
 
 			this.HidePopup();
+		}
+
+		private void PassHoslder_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			if (!_dialogIsShow)
+				AddAccount_Click(null, null);
+		}
+
+		private void LoadAccounts()
+		{
+			IsolatedStorageFile isoStore = IsolatedStorageFile.GetUserStoreForApplication();
+
+			if (isoStore.FileExists("accounts.dat"))
+			{
+				using (IsolatedStorageFileStream isoStream = new IsolatedStorageFileStream("accounts.dat", FileMode.Open, isoStore))
+				{
+					using (StreamReader reader = new StreamReader(isoStream))
+					{
+						_accounts = JsonConvert.DeserializeObject<ObservableCollection<Account>>(reader.ReadToEnd());
+					}
+				}
+			}
+			else
+				_accounts = new ObservableCollection<Account>();			
+		}
+
+		private void SaveAccounts()
+		{
+			IsolatedStorageFile isoStore = IsolatedStorageFile.GetUserStoreForApplication();
+			using (IsolatedStorageFileStream isoStream = new IsolatedStorageFileStream("accounts.dat", FileMode.Create, isoStore))
+			{
+				using (StreamWriter writer = new StreamWriter(isoStream))
+				{
+					writer.WriteLine(JsonConvert.SerializeObject(_accounts));
+					writer.Close();
+				}
+				
+			}
+		}
+
+		private void DeleteItem_Click(object sender, RoutedEventArgs e)
+		{
+			Account r = (sender as MenuItem).DataContext as Account;
+			_accounts.Remove(r);
+			SaveAccounts();
 		}
 	}
 }

@@ -9,6 +9,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using PassKeeper.Resources;
 using System.IO.IsolatedStorage;
+using Microsoft.Phone.Reactive;
 
 namespace PassKeeper
 {
@@ -19,7 +20,7 @@ namespace PassKeeper
 		{
 			InitializeComponent();
 
-			Clipboard.SetText("asd");
+			
 			// Sample code to localize the ApplicationBar
 			//BuildLocalizedApplicationBar();			
 		}
@@ -52,7 +53,11 @@ namespace PassKeeper
 					return;
 				}
 			}
-			NavigationService.Navigate(new Uri("/PasswordPage.xaml", UriKind.Relative));
+			Scheduler.CurrentThread.Schedule(() =>
+			{
+				NavigationService.Navigate(new Uri("/PasswordPage.xaml", UriKind.Relative));
+			}, TimeSpan.FromMilliseconds(250));
+			
 		}
 
 
