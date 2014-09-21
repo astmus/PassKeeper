@@ -140,4 +140,19 @@
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="MessageEnterPassword" xml:space="preserve">
+    <value>Please enter password and press 'Sign in'</value>
+  </data>
+  <data name="MessageWrongPassword" xml:space="preserve">
+    <value>Wrong password</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="MessageLoginWasCopied" xml:space="preserve">
+    <value>Login was copied</value>
+  </data>
+  <data name="MessagePasswordWasCopien" xml:space="preserve">
+    <value>Password was copied</value>
+  </data>
 </root>

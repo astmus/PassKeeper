@@ -61,6 +61,15 @@ namespace PassKeeper.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        public static string Add {
+            get {
+                return ResourceManager.GetString("Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to add.
         /// </summary>
         public static string AppBarButtonText {
@@ -84,6 +93,42 @@ namespace PassKeeper.Resources {
         public static string ApplicationTitle {
             get {
                 return ResourceManager.GetString("ApplicationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter password and press &apos;Sign in&apos;.
+        /// </summary>
+        public static string MessageEnterPassword {
+            get {
+                return ResourceManager.GetString("MessageEnterPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login was copied.
+        /// </summary>
+        public static string MessageLoginWasCopied {
+            get {
+                return ResourceManager.GetString("MessageLoginWasCopied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password was copied.
+        /// </summary>
+        public static string MessagePasswordWasCopien {
+            get {
+                return ResourceManager.GetString("MessagePasswordWasCopien", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrong password.
+        /// </summary>
+        public static string MessageWrongPassword {
+            get {
+                return ResourceManager.GetString("MessageWrongPassword", resourceCulture);
             }
         }
         

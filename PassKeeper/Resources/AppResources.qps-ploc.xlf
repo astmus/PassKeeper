@@ -36,6 +36,26 @@
           <source>Password</source>
           <target state="new">Password</target>
         </trans-unit>
+        <trans-unit id="Resx/MessageWrongPassword" translate="yes" xml:space="preserve">
+          <source>Wrong password</source>
+          <target state="new">Wrong password</target>
+        </trans-unit>
+        <trans-unit id="Resx/Add" translate="yes" xml:space="preserve">
+          <source>Add</source>
+          <target state="new">Add</target>
+        </trans-unit>
+        <trans-unit id="Resx/MessagePasswordWasCopien" translate="yes" xml:space="preserve">
+          <source>Password was copied</source>
+          <target state="new">Password was copied</target>
+        </trans-unit>
+        <trans-unit id="Resx/MessageLoginWasCopied" translate="yes" xml:space="preserve">
+          <source>Login was copied</source>
+          <target state="new">Login was copied</target>
+        </trans-unit>
+        <trans-unit id="Resx/MessageEnterPassword" translate="yes" xml:space="preserve">
+          <source>Please enter password and press 'Sign in'</source>
+          <target state="new">Please enter password and press 'Sign in'</target>
+        </trans-unit>
       </group>
     </body>
   </file>

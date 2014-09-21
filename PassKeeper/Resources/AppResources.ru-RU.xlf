@@ -36,6 +36,26 @@
           <source>Password</source>
           <target state="translated" state-qualifier="tm-suggestion">Пароль</target>
         </trans-unit>
+        <trans-unit id="Resx/MessageWrongPassword" translate="yes" xml:space="preserve">
+          <source>Wrong password</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Неверный пароль.</target>
+        </trans-unit>
+        <trans-unit id="Resx/Add" translate="yes" xml:space="preserve">
+          <source>Add</source>
+          <target state="translated" state-qualifier="tm-suggestion">Добавить</target>
+        </trans-unit>
+        <trans-unit id="Resx/MessagePasswordWasCopien" translate="yes" xml:space="preserve">
+          <source>Password was copied</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Пароль был скопирован</target>
+        </trans-unit>
+        <trans-unit id="Resx/MessageLoginWasCopied" translate="yes" xml:space="preserve">
+          <source>Login was copied</source>
+          <target state="translated">Логин был скопирован</target>
+        </trans-unit>
+        <trans-unit id="Resx/MessageEnterPassword" translate="yes" xml:space="preserve">
+          <source>Please enter password and press 'Sign in'</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Введите пароль и нажмите кнопку «Вход»</target>
+        </trans-unit>
       </group>
     </body>
   </file>

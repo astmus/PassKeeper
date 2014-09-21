@@ -48,8 +48,8 @@
         <Grid VerticalAlignment="Bottom">
             <StackPanel x:Name="TitlePanel"   Margin="12,0,0,0">
                 <TextBlock Margin="12,0,0,0"  Text="{Binding Path=LocalizedResources.Password, Source={StaticResource LocalizedStrings}}"/>
-                <TextBox/>
-                <Button Content="{Binding Path=LocalizedResources.SignIn, Source={StaticResource LocalizedStrings}}"/>
+                <TextBox Name="passwordField"/>
+                <Button Click="SignIn_Click"  Content="{Binding Path=LocalizedResources.SignIn, Source={StaticResource LocalizedStrings}}"/>
             </StackPanel>
         </Grid>
         <!--ContentPanel - place additional content here-->
