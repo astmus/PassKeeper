@@ -6,10 +6,10 @@
     <Language code="ru-RU" />
     <Language code="uk-UA" />
   </Languages>
-  <App xmlns="" ProductID="{82a18463-2543-4800-86dc-c75f2395da51}" Title="PassKeeper" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="PassKeeper author" Description="Simple application for keep your passwords" Publisher="PassKeeper" PublisherID="{629d10c7-47e9-4c53-80d2-d66907c94350}">
-    <IconPath IsRelative="true" IsResource="false">Images\appIcon.png</IconPath>
+  <App xmlns="" ProductID="{82a18463-2543-4800-86dc-c75f2395da51}" Title="PasswordsKeeper" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="PassKeeper author" Description="Simple application for keep your passwords" Publisher="PassKeeper" PublisherID="{629d10c7-47e9-4c53-80d2-d66907c94350}">
+    <IconPath IsRelative="true" IsResource="false">Images\appIcon300.png</IconPath>
     <Capabilities>
-      <Capability Name="ID_CAP_NETWORKING" />
+      <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
     </Capabilities>
     <Tasks>
       <DefaultTask Name="_default" NavigationPage="MainPage.xaml" />
@@ -20,7 +20,7 @@
           <SmallImageURI IsRelative="true" IsResource="false">Images\appIcon99.png</SmallImageURI>
           <Count>0</Count>
           <BackgroundImageURI IsRelative="true" IsResource="false">Images\appIcon173.png</BackgroundImageURI>
-          <Title>PassKeeper</Title>
+          <Title>PasswordsKeeper</Title>
           <BackContent>
           </BackContent>
           <BackBackgroundImageURI>

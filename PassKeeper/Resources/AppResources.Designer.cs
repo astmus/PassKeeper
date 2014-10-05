@@ -97,6 +97,15 @@ namespace PassKeeper.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Apply.
+        /// </summary>
+        public static string Apply {
+            get {
+                return ResourceManager.GetString("Apply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
         public static string Delete {
@@ -106,11 +115,38 @@ namespace PassKeeper.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to get all passwords.
+        /// </summary>
+        public static string GetAllPasswords {
+            get {
+                return ResourceManager.GetString("GetAllPasswords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
         public static string Login {
             get {
                 return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Main password.
+        /// </summary>
+        public static string MasterPassword {
+            get {
+                return ResourceManager.GetString("MasterPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit account data.
+        /// </summary>
+        public static string MessageEditAccount {
+            get {
+                return ResourceManager.GetString("MessageEditAccount", resourceCulture);
             }
         }
         
@@ -169,6 +205,42 @@ namespace PassKeeper.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New password.
+        /// </summary>
+        public static string NewPassword {
+            get {
+                return ResourceManager.GetString("NewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to offer sync after add, delete, change.
+        /// </summary>
+        public static string OfferSyncAfterChange {
+            get {
+                return ResourceManager.GetString("OfferSyncAfterChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sync changes with OneDrive?.
+        /// </summary>
+        public static string OfferSyncChanges {
+            get {
+                return ResourceManager.GetString("OfferSyncChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Old password.
+        /// </summary>
+        public static string OldPassword {
+            get {
+                return ResourceManager.GetString("OldPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string Password {
@@ -196,11 +268,38 @@ namespace PassKeeper.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to send all passwords.
+        /// </summary>
+        public static string SendAllPasswords {
+            get {
+                return ResourceManager.GetString("SendAllPasswords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sign in.
         /// </summary>
         public static string SignIn {
             get {
                 return ResourceManager.GetString("SignIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sync passwords automatically.
+        /// </summary>
+        public static string SyncAuto {
+            get {
+                return ResourceManager.GetString("SyncAuto", resourceCulture);
             }
         }
     }

@@ -54,7 +54,51 @@
         </trans-unit>
         <trans-unit id="Resx/Name" translate="yes" xml:space="preserve">
           <source>Name</source>
-          <target state="translated">Название</target>
+          <target state="signed-off">Название</target>
+        </trans-unit>
+        <trans-unit id="Resx/Settings" translate="yes" xml:space="preserve">
+          <source>Settings</source>
+          <target state="signed-off" state-qualifier="tm-suggestion">Параметры</target>
+        </trans-unit>
+        <trans-unit id="Resx/MessageEditAccount" translate="yes" xml:space="preserve">
+          <source>Edit account data</source>
+          <target state="signed-off" state-qualifier="mt-suggestion">Изменение данных учетной записи</target>
+        </trans-unit>
+        <trans-unit id="Resx/SyncAuto" translate="yes" xml:space="preserve">
+          <source>sync passwords automatically</source>
+          <target state="signed-off">автоматическая синхронизация паролей</target>
+        </trans-unit>
+        <trans-unit id="Resx/OfferSyncChanges" translate="yes" xml:space="preserve">
+          <source>Sync changes with OneDrive?</source>
+          <target state="signed-off">Синхронизировать изменения с OneDrive?</target>
+        </trans-unit>
+        <trans-unit id="Resx/SendAllPasswords" translate="yes" xml:space="preserve">
+          <source>send all passwords</source>
+          <target state="signed-off" state-qualifier="mt-suggestion">Отправить все пароли</target>
+        </trans-unit>
+        <trans-unit id="Resx/OldPassword" translate="yes" xml:space="preserve">
+          <source>Old password</source>
+          <target state="signed-off">Старый пароль</target>
+        </trans-unit>
+        <trans-unit id="Resx/OfferSyncAfterChange" translate="yes" xml:space="preserve">
+          <source>offer sync after add, delete, change</source>
+          <target state="signed-off">предложение синхронизации после изменения</target>
+        </trans-unit>
+        <trans-unit id="Resx/NewPassword" translate="yes" xml:space="preserve">
+          <source>New password</source>
+          <target state="signed-off">Новый пароль</target>
+        </trans-unit>
+        <trans-unit id="Resx/MasterPassword" translate="yes" xml:space="preserve">
+          <source>Main password</source>
+          <target state="signed-off" state-qualifier="mt-suggestion">Основной пароль</target>
+        </trans-unit>
+        <trans-unit id="Resx/GetAllPasswords" translate="yes" xml:space="preserve">
+          <source>get all passwords</source>
+          <target state="signed-off">Получить все пароли</target>
+        </trans-unit>
+        <trans-unit id="Resx/Apply" translate="yes" xml:space="preserve">
+          <source>Apply</source>
+          <target state="signed-off" state-qualifier="tm-suggestion">Применить</target>
         </trans-unit>
         <trans-unit id="Resx/MessageEnterAccountData" translate="yes" xml:space="preserve">
           <source>Enter new account data</source>

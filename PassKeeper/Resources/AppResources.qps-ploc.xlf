@@ -56,6 +56,50 @@
           <source>Name</source>
           <target state="new">Name</target>
         </trans-unit>
+        <trans-unit id="Resx/Settings" translate="yes" xml:space="preserve">
+          <source>Settings</source>
+          <target state="new">Settings</target>
+        </trans-unit>
+        <trans-unit id="Resx/MessageEditAccount" translate="yes" xml:space="preserve">
+          <source>Edit account data</source>
+          <target state="new">Edit account data</target>
+        </trans-unit>
+        <trans-unit id="Resx/SyncAuto" translate="yes" xml:space="preserve">
+          <source>sync passwords automatically</source>
+          <target state="new">sync passwords automatically</target>
+        </trans-unit>
+        <trans-unit id="Resx/OfferSyncChanges" translate="yes" xml:space="preserve">
+          <source>Sync changes with OneDrive?</source>
+          <target state="new">Sync changes with OneDrive?</target>
+        </trans-unit>
+        <trans-unit id="Resx/SendAllPasswords" translate="yes" xml:space="preserve">
+          <source>send all passwords</source>
+          <target state="new">send all passwords</target>
+        </trans-unit>
+        <trans-unit id="Resx/OldPassword" translate="yes" xml:space="preserve">
+          <source>Old password</source>
+          <target state="new">Old password</target>
+        </trans-unit>
+        <trans-unit id="Resx/OfferSyncAfterChange" translate="yes" xml:space="preserve">
+          <source>offer sync after add, delete, change</source>
+          <target state="new">offer sync after add, delete, change</target>
+        </trans-unit>
+        <trans-unit id="Resx/NewPassword" translate="yes" xml:space="preserve">
+          <source>New password</source>
+          <target state="new">New password</target>
+        </trans-unit>
+        <trans-unit id="Resx/MasterPassword" translate="yes" xml:space="preserve">
+          <source>Main password</source>
+          <target state="new">Main password</target>
+        </trans-unit>
+        <trans-unit id="Resx/GetAllPasswords" translate="yes" xml:space="preserve">
+          <source>get all passwords</source>
+          <target state="new">get all passwords</target>
+        </trans-unit>
+        <trans-unit id="Resx/Apply" translate="yes" xml:space="preserve">
+          <source>Apply</source>
+          <target state="new">Apply</target>
+        </trans-unit>
         <trans-unit id="Resx/MessageEnterAccountData" translate="yes" xml:space="preserve">
           <source>Enter new account data</source>
           <target state="new">Enter new account data</target>

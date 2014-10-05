@@ -19,7 +19,7 @@ namespace PassKeeper
 		public MainPage()
 		{
 			InitializeComponent();
-
+            //SystemTray.ProgressIndicator = new ProgressIndicator();
 			
 			// Sample code to localize the ApplicationBar
 			//BuildLocalizedApplicationBar();			
@@ -49,15 +49,14 @@ namespace PassKeeper
 			{
 				if ((string)settings["mainPassword"] != passwordField.Text)
 				{
-					MessageBox.Show(AppResources.MessageWrongPassword);
+					MessageBox.Show(AppResources.MessageWrongPassword);                    
 					return;
 				}
 			}
 			Scheduler.CurrentThread.Schedule(() =>
 			{
 				NavigationService.Navigate(new Uri("/PasswordPage.xaml", UriKind.Relative));
-			}, TimeSpan.FromMilliseconds(250));
-			
+			}, TimeSpan.FromMilliseconds(250));			
 		}
 
 

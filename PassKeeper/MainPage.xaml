@@ -4,17 +4,23 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:convert="clr-namespace:PassKeeper.Converters"
+    xmlns:local="clr-namespace:PassKeeper.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
-
-    <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    
+    <phone:PhoneApplicationPage.Resources>
+        <convert:AccentColorConverter x:Name="k1"  x:Key="AccentColorConverter"/>
+    </phone:PhoneApplicationPage.Resources>
+        <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>            
         </Grid.RowDefinitions>
@@ -37,13 +43,14 @@
             attributes to be drawn from the .resx file that matches the
             CurrentUICulture of the app at run time.
          -->
+        <Border BorderThickness="10" BorderBrush="{Binding Value, Converter={StaticResource AccentColorConverter}, ConverterParameter=0040}"  Background="{Binding Converter={StaticResource AccentColorConverter}, ConverterParameter=0020}">
         <StackPanel>
-            <TextBlock Text="PassKeeper" Padding="12,0,0,0"  Grid.Row="0"  Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
+            <TextBlock Text="PasswordsKeeper" Padding="12,0,0,0"  Grid.Row="0"  Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
             <Border Padding="85,10,85,0">
                 <Image Source="Images/key.png"></Image>
             </Border>
         </StackPanel>
-        
+        </Border>
         <!--TitlePanel contains the name of the application and page title-->
         <Grid VerticalAlignment="Bottom">
             <StackPanel x:Name="TitlePanel"   Margin="12,0,0,0">

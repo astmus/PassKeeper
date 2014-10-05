@@ -12,6 +12,7 @@ namespace PassKeeper
 {
 	public partial class AddAccount : UserControl
 	{
+		public bool IsEdit {get;set;}
 		public AddAccount()
 		{
 			InitializeComponent();

@@ -15,15 +15,15 @@ using System.IO.IsolatedStorage;
 using System.IO;
 using System.Collections.ObjectModel;
 using Newtonsoft.Json;
+using System.Threading;
+using Microsoft.Phone.Reactive;
 
 namespace PassKeeper
 {
 	public partial class PasswordPage : PhoneApplicationPage
 	{
-		public static object[] objs = new object[] { new { Sato = 1 }, new { Sato = 2 }, new { Sato = 3 } };
-
 		TextBlock _lastSelectedLogin = new TextBlock();
-		TextBlock _lastSelectedPasswprd =new TextBlock();
+		TextBlock _lastSelectedPasswprd = new TextBlock();
 		SolidColorBrush _selectColor;
 		SolidColorBrush _defaultColor;
 		bool _dialogIsShow;
@@ -37,7 +37,7 @@ namespace PassKeeper
 			_selectColor = (SolidColorBrush)Application.Current.Resources["PhoneAccentBrush"];
 			_defaultColor = (SolidColorBrush)Application.Current.Resources["PhoneForegroundBrush"];
 			LoadAccounts();
-			PassHoslder.ItemsSource = _accounts;
+			PassHoslder.ItemsSource = _accounts;            
 		}
 
 		private void BuildAppBar()
@@ -46,20 +46,36 @@ namespace PassKeeper
 			ApplicationBarIconButton button = new ApplicationBarIconButton(new Uri("/Images/add.png", UriKind.Relative));
 			button.Text = AppResources.Add;
 			button.Click += AddAccount_Click;
-			ApplicationBar.Buttons.Add(button);			
+			ApplicationBar.Buttons.Add(button);
+
+			ApplicationBarIconButton button2 = new ApplicationBarIconButton(new Uri("/Images/settings.png", UriKind.Relative));
+			button2.Text = AppResources.Settings;
+			button2.Click += ShowSettings_Click;
+			ApplicationBar.Buttons.Add(button2);
+		}
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            if (e.Content is Settings)
+                (e.Content as Settings).PasswordsUpdated += PasswordPage_PasswordsUpdated;
+            base.OnNavigatedFrom(e);
+            
+        }
+
+        void PasswordPage_PasswordsUpdated()
+        {
+            LoadAccounts();
+        }
+
+		void ShowSettings_Click(object sender, EventArgs e)
+		{
+			NavigationService.Navigate(new Uri("/Settings.xaml",UriKind.Relative));
 		}
 
 		void AddAccount_Click(object sender, EventArgs e)
 		{
-			_currentAccountData = new AddAccount();			
-			CustomMessageBox cmb = new CustomMessageBox();
-			cmb.Caption = AppResources.MessageEnterAccountData;
-			cmb.LeftButtonContent = "ok";
-			cmb.RightButtonContent = "cancel";
-			cmb.Content = _currentAccountData;
-			cmb.Dismissed += cmb_Dismissed;
-			cmb.Show();
-			_dialogIsShow = true;
+			_currentAccountData = new AddAccount();
+			ShowAddEditAccountDialog();
 		}
 
 		void cmb_Dismissed(object sender, DismissedEventArgs e)
@@ -71,12 +87,24 @@ namespace PassKeeper
 						if (string.IsNullOrEmpty(_currentAccountData.Login.Text)) return;
 						if (string.IsNullOrEmpty(_currentAccountData.Name.Text)) return;
 						if (string.IsNullOrEmpty(_currentAccountData.Password.Text)) return;
-						Account a = new Account();
-						a.Login = _currentAccountData.Login.Text;
-						a.Name = _currentAccountData.Name.Text;
-						a.Password = _currentAccountData.Password.Text;
-						_accounts.Add(a);
+						if (_currentAccountData.IsEdit)
+						{
+							Account editAccount = PassHoslder.SelectedItem as Account;
+							editAccount.Name = _currentAccountData.Name.Text;
+							editAccount.Login = _currentAccountData.Login.Text;
+							editAccount.Password = _currentAccountData.Password.Text;
+						}
+						else
+						{
+							Account a = new Account();
+							a.Login = _currentAccountData.Login.Text;
+							a.Name = _currentAccountData.Name.Text;
+							a.Password = _currentAccountData.Password.Text;
+							_accounts.Add(a);
+						}						
 						SaveAccounts();
+                        HandleOneDriveBehaviour();                               
+                        
 					}
 					break;
 				case CustomMessageBoxResult.RightButton:				
@@ -88,6 +116,24 @@ namespace PassKeeper
 			PassHoslder.SelectedItem = null;
 			_dialogIsShow = false;
 		}
+
+        private void HandleOneDriveBehaviour()
+        {
+            if (PKSettings.Instance.OfferSyncOneDriveAfterChanges)
+            {
+                if (MessageBox.Show(AppResources.OfferSyncChanges, "", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                    Scheduler.Dispatcher.Schedule(async () =>
+                    {
+                        await OneDrive.Instance.UploadPasswords(_accounts);
+                    }, TimeSpan.FromMilliseconds(500));
+            }
+            else
+                if (PKSettings.Instance.AutomaticSyncOneDrive)
+                    Scheduler.Dispatcher.Schedule(async () =>
+                    {
+                        await OneDrive.Instance.UploadPasswords(_accounts);
+                    }, TimeSpan.FromMilliseconds(500));
+        }
 
 		private void CopyLogin_Click(object sender, RoutedEventArgs e)
 		{			
@@ -193,12 +239,43 @@ namespace PassKeeper
 		private void PassHoslder_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			if (!_dialogIsShow)
-				AddAccount_Click(null, null);
+				EditAccount(PassHoslder.SelectedItem as Account);
+		}
+
+		private void EditAccount(Account account)
+		{
+			_currentAccountData = new AddAccount();
+			_currentAccountData.Name.Text = account.Name;
+			_currentAccountData.Login.Text = account.Login;
+			_currentAccountData.Password.Text = account.Password;
+			_currentAccountData.IsEdit = true;
+			ShowAddEditAccountDialog();
+		}
+
+		private void ShowAddEditAccountDialog()
+		{
+			CustomMessageBox cmb = new CustomMessageBox();
+			cmb.Caption = _currentAccountData.IsEdit ? AppResources.MessageEditAccount : AppResources.MessageEnterAccountData;
+			cmb.LeftButtonContent = "ok";
+			cmb.RightButtonContent = "cancel";
+			cmb.Content = _currentAccountData;
+			cmb.Dismissed += cmb_Dismissed;             
+			cmb.Show();
+            Scheduler.Dispatcher.Schedule(() =>
+            {
+                _currentAccountData.Name.Focus();
+            }, TimeSpan.FromMilliseconds(200));
+			_dialogIsShow = true;
 		}
 
 		private void LoadAccounts()
 		{
 			IsolatedStorageFile isoStore = IsolatedStorageFile.GetUserStoreForApplication();
+
+            if (_accounts != null)
+                _accounts.Clear();
+            else
+                _accounts = new ObservableCollection<Account>();
 
 			if (isoStore.FileExists("accounts.dat"))
 			{
@@ -206,12 +283,12 @@ namespace PassKeeper
 				{
 					using (StreamReader reader = new StreamReader(isoStream))
 					{
-						_accounts = JsonConvert.DeserializeObject<ObservableCollection<Account>>(reader.ReadToEnd());
+                        var loadedAccounts = JsonConvert.DeserializeObject<ObservableCollection<Account>>(reader.ReadToEnd());
+                        foreach (Account a in loadedAccounts)
+                            _accounts.Add(a);
 					}
 				}
-			}
-			else
-				_accounts = new ObservableCollection<Account>();			
+			}			
 		}
 
 		private void SaveAccounts()
@@ -233,6 +310,7 @@ namespace PassKeeper
 			Account r = (sender as MenuItem).DataContext as Account;
 			_accounts.Remove(r);
 			SaveAccounts();
+            HandleOneDriveBehaviour();            
 		}
 	}
 }

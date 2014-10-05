@@ -167,4 +167,37 @@
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="MessageEditAccount" xml:space="preserve">
+    <value>Edit account data</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="GetAllPasswords" xml:space="preserve">
+    <value>get all passwords</value>
+  </data>
+  <data name="MasterPassword" xml:space="preserve">
+    <value>Main password</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="OfferSyncAfterChange" xml:space="preserve">
+    <value>offer sync after add, delete, change</value>
+  </data>
+  <data name="OldPassword" xml:space="preserve">
+    <value>Old password</value>
+  </data>
+  <data name="SendAllPasswords" xml:space="preserve">
+    <value>send all passwords</value>
+  </data>
+  <data name="SyncAuto" xml:space="preserve">
+    <value>sync passwords automatically</value>
+  </data>
+  <data name="OfferSyncChanges" xml:space="preserve">
+    <value>Sync changes with OneDrive?</value>
+  </data>
 </root>

@@ -56,6 +56,50 @@
           <source>Name</source>
           <target state="signed-off">Назва</target>
         </trans-unit>
+        <trans-unit id="Resx/Settings" translate="yes" xml:space="preserve">
+          <source>Settings</source>
+          <target state="translated">Налаштування</target>
+        </trans-unit>
+        <trans-unit id="Resx/MessageEditAccount" translate="yes" xml:space="preserve">
+          <source>Edit account data</source>
+          <target state="signed-off" state-qualifier="mt-suggestion">Редагувати дані акаунту</target>
+        </trans-unit>
+        <trans-unit id="Resx/SyncAuto" translate="yes" xml:space="preserve">
+          <source>sync passwords automatically</source>
+          <target state="signed-off" state-qualifier="mt-suggestion">автоматичної синхронізації паролів</target>
+        </trans-unit>
+        <trans-unit id="Resx/OfferSyncChanges" translate="yes" xml:space="preserve">
+          <source>Sync changes with OneDrive?</source>
+          <target state="signed-off">Синхронізувати зміни з OneDrive?</target>
+        </trans-unit>
+        <trans-unit id="Resx/SendAllPasswords" translate="yes" xml:space="preserve">
+          <source>send all passwords</source>
+          <target state="signed-off">надіслати всі паролі</target>
+        </trans-unit>
+        <trans-unit id="Resx/OldPassword" translate="yes" xml:space="preserve">
+          <source>Old password</source>
+          <target state="signed-off">Старий пароль</target>
+        </trans-unit>
+        <trans-unit id="Resx/OfferSyncAfterChange" translate="yes" xml:space="preserve">
+          <source>offer sync after add, delete, change</source>
+          <target state="signed-off">пропозиція синхронізації після змінення</target>
+        </trans-unit>
+        <trans-unit id="Resx/NewPassword" translate="yes" xml:space="preserve">
+          <source>New password</source>
+          <target state="signed-off">Новий пароль</target>
+        </trans-unit>
+        <trans-unit id="Resx/MasterPassword" translate="yes" xml:space="preserve">
+          <source>Main password</source>
+          <target state="signed-off" state-qualifier="mt-suggestion">Головний пароль</target>
+        </trans-unit>
+        <trans-unit id="Resx/GetAllPasswords" translate="yes" xml:space="preserve">
+          <source>get all passwords</source>
+          <target state="signed-off" state-qualifier="mt-suggestion">отримати всі паролі</target>
+        </trans-unit>
+        <trans-unit id="Resx/Apply" translate="yes" xml:space="preserve">
+          <source>Apply</source>
+          <target state="signed-off" state-qualifier="tm-suggestion">Застосувати</target>
+        </trans-unit>
         <trans-unit id="Resx/MessageEnterAccountData" translate="yes" xml:space="preserve">
           <source>Enter new account data</source>
           <target state="signed-off" state-qualifier="mt-suggestion">Введіть нові дані облікового запису</target>
